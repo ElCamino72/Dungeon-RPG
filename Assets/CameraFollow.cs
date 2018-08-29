@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
-	private Transform playerTransform;
+
+	GameObject player;
 
 	// Use this for initialization
 	void Start () {
-		// Grab Player Transform
-		playerTransform = GameObject.FindWithTag ("Player").GetComponent <Transform>();
+		// Grab Player
+		player = GameObject.FindGameObjectWithTag("Player");
+		print (player.ToString ());
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	void LateUpdate () {
-		Vector3 playerPosition = playerTransform.position;
-		transform.SetPositionAndRotation (playerPosition, transform.rotation);
+		transform.position = player.transform.position;
 	}
 }
